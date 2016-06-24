@@ -2,10 +2,6 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "group:Example"
-      name = "Example">
-   </Group>
-   <Group
       location = "group:MKTagsViewController"
       name = "MKTagsViewController">
       <FileRef
@@ -15,4 +11,7 @@
          location = "group:MKTagsViewController.m">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:/Users/mdl/Workspace/MKTagsViewController/Example/Example.xcodeproj">
+   </FileRef>
 </Workspace>
