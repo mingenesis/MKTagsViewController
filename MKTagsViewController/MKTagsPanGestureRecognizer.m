@@ -20,6 +20,10 @@
     
     [super touchesMoved:touches withEvent:event];
     
+    if (touches.count > 1) {
+        self.state = UIGestureRecognizerStateFailed;
+    }
+    
     if (self.state == UIGestureRecognizerStateBegan) {
         if (translation.y > 0 && ABS(translation.x / translation.y) <= 1) {
             self.state = UIGestureRecognizerStateFailed;

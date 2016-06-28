@@ -57,111 +57,106 @@
 }
 
 - (void)handleInteractiveGR:(UIPanGestureRecognizer *)gestureRecognizer {
-    NSLog(@"handleInteractiveGR:%@", @(gestureRecognizer.state));
+//    NSLog(@"handleInteractiveGR:%@", @(gestureRecognizer.state));
     
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
+    UIViewController *transitioningVC = self.transitioningViewController;
+    UIViewController *selectedVC = self.selectedViewController;
+    CGRect selectedFrame = self.contentView.bounds;
+    CGRect transFrame = self.contentView.bounds;
     
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         self.transDirection = translation.x > 0 ? 1 : -1;
         
-        [self.selectedViewController beginAppearanceTransition:NO animated:YES];
+        [selectedVC beginAppearanceTransition:NO animated:YES];
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        if ((translation.x >= 0 && self.transDirection == -1) || (translation.x <= 0 && self.transDirection == 1)) {
-            if (self.transitioningViewController) {
-                [self.transitioningViewController beginAppearanceTransition:NO animated:NO];
-                [self.transitioningViewController.view removeFromSuperview];
-                [self.transitioningViewController endAppearanceTransition];
+        if (translation.x * self.transDirection <= 0) {
+            if (transitioningVC) {
+                [transitioningVC beginAppearanceTransition:NO animated:NO];
+                [transitioningVC.view removeFromSuperview];
+                [transitioningVC endAppearanceTransition];
                 
-                self.transitioningViewController = nil;
+                transitioningVC = self.transitioningViewController = nil;
             }
         }
         
-        if (!self.transitioningViewController) {
+        if (!transitioningVC) {
             self.transDirection = translation.x > 0 ? 1 : -1;
-            NSUInteger selectedIndex = [self.viewControllers indexOfObject:self.selectedViewController];
+            NSUInteger selectedIndex = [self.viewControllers indexOfObject:selectedVC];
             NSInteger transIndex = selectedIndex - self.transDirection;
             
             if (0 <= transIndex && transIndex < self.viewControllers.count) {
-                self.transitioningViewController = self.viewControllers[transIndex];
+                transitioningVC = self.transitioningViewController = self.viewControllers[transIndex];
                 
-                [self.transitioningViewController beginAppearanceTransition:YES animated:YES];
+                [transitioningVC beginAppearanceTransition:YES animated:YES];
+                transitioningVC.view.frame = self.contentView.bounds;
+                transitioningVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                 
-                self.transitioningViewController.view.frame = self.contentView.bounds;
-                self.transitioningViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-                
-                [self.contentView addSubview:self.transitioningViewController.view];
+                [self.contentView addSubview:transitioningVC.view];
             }
         }
-        
-        CGRect selectedFrame = self.contentView.bounds;
-        CGFloat originX = 0.5 * translation.x * selectedFrame.size.width / (selectedFrame.size.width + self.transDirection * translation.x);
         
         if (self.transitioningViewController) {
-            CGRect transFrame = self.contentView.bounds;
+            selectedFrame.origin.x = translation.x;
+            transFrame.origin.x = translation.x - self.transDirection * (transFrame.size.width + 10);
             
-            CGFloat origX = self.transDirection * translation.x - selectedFrame.size.width;
-            if (origX > 0) {
-                selectedFrame.origin.x = self.transDirection * (selectedFrame.size.width + 0.5 * origX * selectedFrame.size.width / (selectedFrame.size.width + origX));
-            } else {
-                selectedFrame.origin.x = translation.x;
-            }
-            transFrame.origin.x = selectedFrame.origin.x - self.transDirection * (transFrame.size.width + 10);
-            
-            self.transitioningViewController.view.frame = transFrame;
-        } else {
-            selectedFrame.origin.x = originX;
-        }
-        
-        self.selectedViewController.view.frame = selectedFrame;
-    }
-    else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        CGRect selectedFrame = self.contentView.bounds;
-        CGRect transFrame = self.contentView.bounds;
-        UIViewController *transitioningVC = self.transitioningViewController;
-        UIViewController *selectedVC = self.selectedViewController;
-        
-        selectedFrame.origin.x = self.transDirection * (selectedFrame.size.width + 10);
-        _selectedViewController = transitioningVC;
-        
-        self.transitioningViewController = nil;
-        
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            selectedVC.view.frame = selectedFrame;
             transitioningVC.view.frame = transFrame;
-        } completion:^(BOOL finished) {
-            [selectedVC.view removeFromSuperview];
-            
-            [selectedVC endAppearanceTransition];
-            [transitioningVC endAppearanceTransition];
-            
-            [self.selectedViewController didMoveToParentViewController:self];
-        }];
+            selectedVC.view.frame = selectedFrame;
+        } else {
+            selectedFrame.origin.x = 0.5 * translation.x * selectedFrame.size.width / (selectedFrame.size.width + self.transDirection * translation.x);
+            selectedVC.view.frame = selectedFrame;
+        }
     }
     else {
-        CGRect selectedFrame = self.contentView.bounds;
-        CGRect transFrame = self.contentView.bounds;
-        UIViewController *transitioningVC = self.transitioningViewController;
-        UIViewController *selectedVC = self.selectedViewController;
-        
-        transFrame.origin.x = - self.transDirection * (transFrame.size.width + 10);
+        if (!self.transitioningViewController) {
+            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                selectedVC.view.frame = selectedFrame;
+            } completion:^(BOOL finished) {
+                [selectedVC endAppearanceTransition];
+                [selectedVC didMoveToParentViewController:self];
+            }];
+            
+            return;
+        }
         
         self.transitioningViewController = nil;
         
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            selectedVC.view.frame = selectedFrame;
-            transitioningVC.view.frame = transFrame;
+        if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+            _selectedViewController = transitioningVC;
             
-            [selectedVC beginAppearanceTransition:YES animated:YES];
-            [transitioningVC beginAppearanceTransition:NO animated:YES];
-        } completion:^(BOOL finished) {
-            [transitioningVC.view removeFromSuperview];
+            selectedFrame.origin.x = self.transDirection * (selectedFrame.size.width + 10);
+            
+            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                selectedVC.view.frame = selectedFrame;
+                transitioningVC.view.frame = transFrame;
+            } completion:^(BOOL finished) {
+                [selectedVC.view removeFromSuperview];
                 
-            [selectedVC endAppearanceTransition];
-            [transitioningVC endAppearanceTransition];
+                [selectedVC endAppearanceTransition];
+                [transitioningVC endAppearanceTransition];
+                
+                [selectedVC didMoveToParentViewController:self];
+            }];
+        }
+        else {
+            transFrame.origin.x = - self.transDirection * (transFrame.size.width + 10);
             
-            [self.selectedViewController didMoveToParentViewController:self];
-        }];
+            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                selectedVC.view.frame = selectedFrame;
+                transitioningVC.view.frame = transFrame;
+                
+                [selectedVC beginAppearanceTransition:YES animated:YES];
+                [transitioningVC beginAppearanceTransition:NO animated:YES];
+            } completion:^(BOOL finished) {
+                [transitioningVC.view removeFromSuperview];
+                
+                [selectedVC endAppearanceTransition];
+                [transitioningVC endAppearanceTransition];
+                
+                [selectedVC didMoveToParentViewController:self];
+            }];
+        }
     }
 }
 
