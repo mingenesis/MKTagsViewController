@@ -207,6 +207,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="2d3-2Z-jE5"/>
+                    <connections>
+                        <outletCollection property="tagButtons" destination="Yad-gZ-GXB" id="ZwK-tb-frs"/>
+                        <outletCollection property="tagButtons" destination="tys-xi-MAr" id="ZGa-Ym-dxZ"/>
+                        <outletCollection property="tagButtons" destination="MXz-R9-gd0" id="QyN-Yt-VK6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICG-W2-xSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
