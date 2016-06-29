@@ -71,7 +71,7 @@
         [selectedVC beginAppearanceTransition:NO animated:YES];
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        if (translation.x * self.transDirection <= 0) {
+        if (translation.x * self.transDirection < 0) {
             if (transitioningVC) {
                 [transitioningVC beginAppearanceTransition:NO animated:NO];
                 [transitioningVC.view removeFromSuperview];
@@ -112,6 +112,8 @@
         if (!self.transitioningViewController) {
             [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 selectedVC.view.frame = selectedFrame;
+                
+                [selectedVC beginAppearanceTransition:YES animated:YES];
             } completion:^(BOOL finished) {
                 [selectedVC endAppearanceTransition];
                 [selectedVC didMoveToParentViewController:self];

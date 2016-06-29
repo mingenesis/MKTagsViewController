@@ -25,7 +25,7 @@
     }
     
     if (self.state == UIGestureRecognizerStateBegan) {
-        if (translation.y > 0 && ABS(translation.x / translation.y) <= 1) {
+        if (translation.y != 0 && ABS(translation.x / translation.y) <= 1) {
             self.state = UIGestureRecognizerStateFailed;
         }
     }
