@@ -6,8 +6,8 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "MKTagsViewController.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : MKTagsViewController
 
 @end

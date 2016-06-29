@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKTagsViewController : UIViewController
 
+@property (null_resettable, nonatomic, strong) IBOutlet UIView *contentView;
+
 @property (nullable, nonatomic, copy) NSArray<__kindof UIViewController *> *viewControllers;
 @property (nullable, nonatomic, weak) UIViewController *selectedViewController;
 @property (nullable, nonatomic, readonly) UIGestureRecognizer *interactiveGestureRecognizer;

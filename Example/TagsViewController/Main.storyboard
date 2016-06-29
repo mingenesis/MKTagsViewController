@@ -138,12 +138,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmC-3I-A3k">
-                                <rect key="frame" x="0.0" y="114" width="600" height="486"/>
-                                <connections>
-                                    <segue destination="opE-Wk-OcI" kind="embed" identifier="Body" id="1d3-2z-Up1"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkS-vo-SY0">
                                 <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                                 <subviews>
@@ -186,28 +180,25 @@
                                     <constraint firstAttribute="bottom" secondItem="Yad-gZ-GXB" secondAttribute="bottom" id="v6u-dD-HwZ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4R-pm-MXB">
+                                <rect key="frame" x="0.0" y="114" width="600" height="486"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8dW-sJ-nGn" firstAttribute="top" secondItem="zmC-3I-A3k" secondAttribute="bottom" constant="190" id="1SL-9e-fap"/>
-                            <constraint firstItem="zmC-3I-A3k" firstAttribute="top" secondItem="GvK-wM-9S6" secondAttribute="bottom" constant="218" id="2Kd-8K-ABm"/>
                             <constraint firstItem="KkS-vo-SY0" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leading" id="4fq-dL-7V2"/>
-                            <constraint firstAttribute="trailing" secondItem="zmC-3I-A3k" secondAttribute="trailing" id="Hyx-23-70E"/>
+                            <constraint firstItem="8dW-sJ-nGn" firstAttribute="top" secondItem="g4R-pm-MXB" secondAttribute="bottom" id="Jcp-wT-6zS"/>
                             <constraint firstItem="KkS-vo-SY0" firstAttribute="top" secondItem="GvK-wM-9S6" secondAttribute="bottom" id="Ns1-jP-ZBd"/>
                             <constraint firstAttribute="trailing" secondItem="KkS-vo-SY0" secondAttribute="trailing" id="Qaw-6g-gAy"/>
-                            <constraint firstItem="zmC-3I-A3k" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="bottom" id="r3f-X2-AwV"/>
-                            <constraint firstItem="8dW-sJ-nGn" firstAttribute="top" secondItem="zmC-3I-A3k" secondAttribute="bottom" id="uPy-zp-FvM"/>
-                            <constraint firstItem="zmC-3I-A3k" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leading" id="ydS-Dm-sui"/>
+                            <constraint firstAttribute="trailing" secondItem="g4R-pm-MXB" secondAttribute="trailing" id="jky-cv-p4x"/>
+                            <constraint firstItem="g4R-pm-MXB" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leading" id="qAc-Si-Y7S"/>
+                            <constraint firstItem="g4R-pm-MXB" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="bottom" id="rJd-Mb-jOF"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2Kd-8K-ABm"/>
-                                <exclude reference="1SL-9e-fap"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="2d3-2Z-jE5"/>
                     <connections>
+                        <outlet property="contentView" destination="g4R-pm-MXB" id="MXU-VK-OKI"/>
                         <outletCollection property="tagButtons" destination="Yad-gZ-GXB" id="ZwK-tb-frs"/>
                         <outletCollection property="tagButtons" destination="tys-xi-MAr" id="ZGa-Ym-dxZ"/>
                         <outletCollection property="tagButtons" destination="MXz-R9-gd0" id="QyN-Yt-VK6"/>
@@ -248,20 +239,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9od-na-hLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1889" y="-28"/>
-        </scene>
-        <!--Tags View Controller-->
-        <scene sceneID="4Yq-Rc-Jma">
-            <objects>
-                <viewController id="opE-Wk-OcI" customClass="MKTagsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oxX-4P-vlz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="486"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BnY-CZ-Gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1118" y="516"/>
         </scene>
     </scenes>
 </document>

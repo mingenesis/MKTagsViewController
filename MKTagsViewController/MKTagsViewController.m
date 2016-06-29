@@ -11,7 +11,7 @@
 
 @interface MKTagsViewController ()
 
-@property (nonatomic, strong) UIView *contentView;
+
 
 @property (nonatomic, weak) UIViewController *transitioningViewController;
 @property (nonatomic) NSInteger transDirection;
@@ -20,24 +20,26 @@
 
 @implementation MKTagsViewController
 
+- (void)loadView {
+    [super loadView];
+    
+    self.contentView.clipsToBounds = YES;
+    
+    if (!self.contentView.superview) {
+        self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:self.contentView];
+        
+        NSDictionary *vs = @{@"contentView": self.contentView};
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:vs]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:vs]];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
-    contentView.clipsToBounds = YES;
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:contentView];
-    
-    NSDictionary *vs = NSDictionaryOfVariableBindings(contentView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:vs]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:vs]];
-    
-    MKTagsPanGestureRecognizer *interactiveGR = [[MKTagsPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleInteractiveGR:)];
-    interactiveGR.maximumNumberOfTouches = 1;
-    [contentView addGestureRecognizer:interactiveGR];
-    
-    _contentView = contentView;
-    _interactiveGestureRecognizer = interactiveGR;
+
+    _interactiveGestureRecognizer = [[MKTagsPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleInteractiveGR:)];
+    [self.contentView addGestureRecognizer:self.interactiveGestureRecognizer];
     
     [self transitionFromViewController:nil toViewController:self.selectedViewController];
     
@@ -230,9 +232,17 @@
     UIViewController *fromSVC = _selectedViewController;
     _selectedViewController = selectedViewController;
     
-    if (self.contentView) {
+    if (self.interactiveGestureRecognizer) {
         [self transitionFromViewController:fromSVC toViewController:selectedViewController];
     }
+}
+
+- (UIView *)contentView {
+    if (!_contentView) {
+        _contentView = [[UIView alloc] initWithFrame:self.view.bounds];
+    }
+    
+    return _contentView;
 }
 
 @end
