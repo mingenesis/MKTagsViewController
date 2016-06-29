@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -46,7 +47,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="sLY-6n-bvs" kind="show" id="eAz-6s-b8b"/>
+                                    <segue destination="sLY-6n-bvs" kind="show" id="ccR-Ca-j5d"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaY-7w-YVe">
@@ -140,14 +141,49 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmC-3I-A3k">
                                 <rect key="frame" x="0.0" y="114" width="600" height="486"/>
                                 <connections>
-                                    <segue destination="opE-Wk-OcI" kind="embed" id="KVj-1I-e4X"/>
+                                    <segue destination="opE-Wk-OcI" kind="embed" identifier="Body" id="1d3-2z-Up1"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkS-vo-SY0">
                                 <rect key="frame" x="0.0" y="64" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yad-gZ-GXB">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                        <state key="normal" title="vc1"/>
+                                        <connections>
+                                            <action selector="tagButtonDidClick:" destination="8tb-lS-r8w" eventType="touchUpInside" id="CCZ-C1-GRg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tys-xi-MAr">
+                                        <rect key="frame" x="200" y="0.0" width="200" height="50"/>
+                                        <state key="normal" title="vc2"/>
+                                        <connections>
+                                            <action selector="tagButtonDidClick:" destination="8tb-lS-r8w" eventType="touchUpInside" id="tRB-35-Gsh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXz-R9-gd0">
+                                        <rect key="frame" x="400" y="0.0" width="200" height="50"/>
+                                        <state key="normal" title="vc3"/>
+                                        <connections>
+                                            <action selector="tagButtonDidClick:" destination="8tb-lS-r8w" eventType="touchUpInside" id="2MB-hW-qrk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="leading" secondItem="KkS-vo-SY0" secondAttribute="leading" id="0NA-JR-vfN"/>
+                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="1tV-cW-IeJ"/>
+                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="9n6-5T-A5E"/>
+                                    <constraint firstItem="tys-xi-MAr" firstAttribute="leading" secondItem="Yad-gZ-GXB" secondAttribute="trailing" id="Jtp-cN-tYI"/>
+                                    <constraint firstItem="tys-xi-MAr" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="NXl-jR-5V1"/>
+                                    <constraint firstItem="tys-xi-MAr" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="PXP-8E-2UK"/>
+                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="QsC-3c-MrB"/>
                                     <constraint firstAttribute="height" constant="50" id="UT3-Lu-Hjz"/>
+                                    <constraint firstAttribute="bottom" secondItem="tys-xi-MAr" secondAttribute="bottom" id="XE2-M3-oNW"/>
+                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="leading" secondItem="tys-xi-MAr" secondAttribute="trailing" id="ah5-cb-toL"/>
+                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="lX8-sR-VWf"/>
+                                    <constraint firstAttribute="bottom" secondItem="MXz-R9-gd0" secondAttribute="bottom" id="sqD-Yz-QDT"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yad-gZ-GXB" secondAttribute="bottom" id="v6u-dD-HwZ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -208,10 +244,10 @@
             </objects>
             <point key="canvasLocation" x="1889" y="-28"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Tags View Controller-->
         <scene sceneID="4Yq-Rc-Jma">
             <objects>
-                <viewController id="opE-Wk-OcI" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController id="opE-Wk-OcI" customClass="MKTagsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oxX-4P-vlz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="486"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

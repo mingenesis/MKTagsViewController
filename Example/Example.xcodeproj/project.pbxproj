@@ -12,7 +12,6 @@
 		402786681D1D3B0800C32BDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 402786671D1D3B0800C32BDD /* Assets.xcassets */; };
 		4027866B1D1D3B0800C32BDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402786691D1D3B0800C32BDD /* LaunchScreen.storyboard */; };
 		402786761D1D3C7300C32BDD /* MKTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402786741D1D3C7300C32BDD /* MKTagsViewController.m */; };
-		402786791D2134CF00C32BDD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402786781D2134CF00C32BDD /* MainViewController.m */; };
 		4027867C1D21356D00C32BDD /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027867B1D21356D00C32BDD /* TopicViewController.m */; };
 		4027867F1D214B3300C32BDD /* MKTagsPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027867E1D214B3300C32BDD /* MKTagsPanGestureRecognizer.m */; };
 		402786831D23684700C32BDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402786821D23684700C32BDD /* Main.storyboard */; };
@@ -30,8 +29,6 @@
 		4027866C1D1D3B0800C32BDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		402786731D1D3C7300C32BDD /* MKTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTagsViewController.h; sourceTree = "<group>"; };
 		402786741D1D3C7300C32BDD /* MKTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTagsViewController.m; sourceTree = "<group>"; };
-		402786771D2134CF00C32BDD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		402786781D2134CF00C32BDD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4027867A1D21356D00C32BDD /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
 		4027867B1D21356D00C32BDD /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
 		4027867D1D214B3300C32BDD /* MKTagsPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTagsPanGestureRecognizer.h; sourceTree = "<group>"; };
@@ -78,8 +75,6 @@
 				4027865F1D1D3B0800C32BDD /* AppDelegate.m */,
 				4027868A1D237EB200C32BDD /* HomeViewController.h */,
 				4027868B1D237EB200C32BDD /* HomeViewController.m */,
-				402786771D2134CF00C32BDD /* MainViewController.h */,
-				402786781D2134CF00C32BDD /* MainViewController.m */,
 				4027867A1D21356D00C32BDD /* TopicViewController.h */,
 				4027867B1D21356D00C32BDD /* TopicViewController.m */,
 				402786901D238F0300C32BDD /* TabBarViewController.h */,
@@ -193,7 +188,6 @@
 				4027867F1D214B3300C32BDD /* MKTagsPanGestureRecognizer.m in Sources */,
 				402786601D1D3B0800C32BDD /* AppDelegate.m in Sources */,
 				4027865D1D1D3B0800C32BDD /* main.m in Sources */,
-				402786791D2134CF00C32BDD /* MainViewController.m in Sources */,
 				402786921D238F0300C32BDD /* TabBarViewController.m in Sources */,
 				4027867C1D21356D00C32BDD /* TopicViewController.m in Sources */,
 				4027868C1D237EB200C32BDD /* HomeViewController.m in Sources */,

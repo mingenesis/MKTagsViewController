@@ -33,6 +33,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:vs]];
     
     MKTagsPanGestureRecognizer *interactiveGR = [[MKTagsPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleInteractiveGR:)];
+    interactiveGR.maximumNumberOfTouches = 1;
     [contentView addGestureRecognizer:interactiveGR];
     
     _contentView = contentView;
@@ -44,7 +45,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)handleResignActiveNotification:(NSNotification *)noti {
@@ -53,8 +54,6 @@
 }
 
 - (void)handleInteractiveGR:(UIPanGestureRecognizer *)gestureRecognizer {
-//    NSLog(@"handleInteractiveGR:%@", @(gestureRecognizer.state));
-    
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
     UIViewController *transitioningVC = self.transitioningViewController;
     UIViewController *selectedVC = self.selectedViewController;
@@ -86,7 +85,7 @@
                 transitioningVC = self.transitioningViewController = self.viewControllers[transIndex];
                 
                 [transitioningVC beginAppearanceTransition:YES animated:YES];
-                transitioningVC.view.frame = self.contentView.bounds;
+                transitioningVC.view.frame = transFrame;
                 transitioningVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                 
                 [self.contentView addSubview:transitioningVC.view];
@@ -111,7 +110,9 @@
                 
                 [selectedVC beginAppearanceTransition:YES animated:YES];
             } completion:^(BOOL finished) {
-                [selectedVC endAppearanceTransition];
+                if (finished) {
+                    [selectedVC endAppearanceTransition];
+                }
             }];
             
             return;
@@ -134,25 +135,42 @@
             } completion:^(BOOL finished) {
                 [selectedVC.view removeFromSuperview];
                 
-                [selectedVC endAppearanceTransition];
-                [transitioningVC endAppearanceTransition];
+                if (finished) {
+                    [selectedVC endAppearanceTransition];
+                    [transitioningVC endAppearanceTransition];
+                }
             }];
         }
         else {
             transFrame.origin.x = - self.transDirection * (transFrame.size.width + 10);
             
-            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            if (self.interactiveGestureRecognizer.enabled) {
+                [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                    selectedVC.view.frame = selectedFrame;
+                    transitioningVC.view.frame = transFrame;
+                    
+                    [transitioningVC beginAppearanceTransition:NO animated:YES];
+                    [selectedVC beginAppearanceTransition:YES animated:YES];
+                } completion:^(BOOL finished) {
+                    [transitioningVC.view removeFromSuperview];
+                    
+                    if (finished) {
+                        [transitioningVC endAppearanceTransition];
+                        [selectedVC endAppearanceTransition];
+                    }
+                }];
+            }
+            else {
                 selectedVC.view.frame = selectedFrame;
                 transitioningVC.view.frame = transFrame;
                 
-                [transitioningVC beginAppearanceTransition:NO animated:YES];
-                [selectedVC beginAppearanceTransition:YES animated:YES];
-            } completion:^(BOOL finished) {
-                [transitioningVC.view removeFromSuperview];
+                [transitioningVC beginAppearanceTransition:NO animated:NO];
+                [selectedVC beginAppearanceTransition:YES animated:NO];
                 
+                [transitioningVC.view removeFromSuperview];
                 [transitioningVC endAppearanceTransition];
                 [selectedVC endAppearanceTransition];
-            }];
+            }
         }
     }
 }
@@ -202,6 +220,11 @@
         if (selectedViewController == _selectedViewController) {
             return;
         }
+    }
+    
+    if (self.interactiveGestureRecognizer) {
+        self.interactiveGestureRecognizer.enabled = NO;
+        self.interactiveGestureRecognizer.enabled = YES;
     }
     
     UIViewController *fromSVC = _selectedViewController;

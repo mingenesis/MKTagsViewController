@@ -29,10 +29,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface UIViewController (MKTagsViewController)
-
-@property (nullable, nonatomic, readonly, strong) MKTagsViewController *mk_tagsViewController;
-
-@end
-
 NS_ASSUME_NONNULL_END
