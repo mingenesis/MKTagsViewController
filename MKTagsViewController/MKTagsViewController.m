@@ -20,8 +20,8 @@
 
 @implementation MKTagsViewController
 
-- (void)loadView {
-    [super loadView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
     contentView.clipsToBounds = YES;
@@ -37,10 +37,6 @@
     
     _contentView = contentView;
     _interactiveGestureRecognizer = interactiveGR;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
     
     [self transitionFromViewController:nil toViewController:self.selectedViewController];
     
@@ -116,7 +112,6 @@
                 [selectedVC beginAppearanceTransition:YES animated:YES];
             } completion:^(BOOL finished) {
                 [selectedVC endAppearanceTransition];
-                [selectedVC didMoveToParentViewController:self];
             }];
             
             return;
@@ -126,6 +121,10 @@
         
         if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
             _selectedViewController = transitioningVC;
+            
+            if ([self.delegate respondsToSelector:@selector(tagsViewController:didSelectViewController:)]) {
+                [self.delegate tagsViewController:self didSelectViewController:self.selectedViewController];
+            }
             
             selectedFrame.origin.x = self.transDirection * (selectedFrame.size.width + 10);
             
@@ -137,8 +136,6 @@
                 
                 [selectedVC endAppearanceTransition];
                 [transitioningVC endAppearanceTransition];
-                
-                [selectedVC didMoveToParentViewController:self];
             }];
         }
         else {
@@ -148,15 +145,13 @@
                 selectedVC.view.frame = selectedFrame;
                 transitioningVC.view.frame = transFrame;
                 
-                [selectedVC beginAppearanceTransition:YES animated:YES];
                 [transitioningVC beginAppearanceTransition:NO animated:YES];
+                [selectedVC beginAppearanceTransition:YES animated:YES];
             } completion:^(BOOL finished) {
                 [transitioningVC.view removeFromSuperview];
                 
-                [selectedVC endAppearanceTransition];
                 [transitioningVC endAppearanceTransition];
-                
-                [selectedVC didMoveToParentViewController:self];
+                [selectedVC endAppearanceTransition];
             }];
         }
     }
@@ -164,7 +159,6 @@
 
 - (void)transitionFromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController {
     if (fromViewController) {
-        [fromViewController willMoveToParentViewController:nil];
         [fromViewController.view removeFromSuperview];
     }
     
@@ -172,7 +166,6 @@
         toViewController.view.frame = self.contentView.bounds;
         toViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.contentView addSubview:toViewController.view];
-        [toViewController didMoveToParentViewController:self];
     }
 }
 
@@ -189,6 +182,7 @@
     
     for (UIViewController *vc in viewControllers) {
         [self addChildViewController:vc];
+        [vc didMoveToParentViewController:self];
     }
     
     if (fromSVC && [viewControllers containsObject:fromSVC]) {
@@ -213,7 +207,7 @@
     UIViewController *fromSVC = _selectedViewController;
     _selectedViewController = selectedViewController;
     
-    if ([self isViewLoaded]) {
+    if (self.contentView) {
         [self transitionFromViewController:fromSVC toViewController:selectedViewController];
     }
 }

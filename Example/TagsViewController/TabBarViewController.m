@@ -1,31 +1,31 @@
 //
-//  MainViewController.m
+//  TabBarViewController.m
 //  Example
 //
-//  Created by Mingenesis on 16/6/27.
+//  Created by Mingenesis on 16/6/29.
 //
 //
 
-#import "MainViewController.h"
+#import "TabBarViewController.h"
 #import "TopicViewController.h"
 
-@interface MainViewController ()
+@interface TabBarViewController ()
 
 @end
 
-@implementation MainViewController
+@implementation TabBarViewController
 
 - (void)loadView {
     [super loadView];
     
     TopicViewController *vc1 = [[TopicViewController alloc] init];
-    vc1.title = @"vc1";
+    vc1.title = @"tb1";
     
     TopicViewController *vc2 = [[TopicViewController alloc] init];
-    vc2.title = @"vc2";
+    vc2.title = @"tb2";
     
     TopicViewController *vc3 = [[TopicViewController alloc] init];
-    vc3.title = @"vc3";
+    vc3.title = @"tb3";
     
     self.viewControllers = @[vc1, vc2, vc3];
 }

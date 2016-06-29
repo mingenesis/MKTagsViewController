@@ -15,6 +15,9 @@
 		402786791D2134CF00C32BDD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402786781D2134CF00C32BDD /* MainViewController.m */; };
 		4027867C1D21356D00C32BDD /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027867B1D21356D00C32BDD /* TopicViewController.m */; };
 		4027867F1D214B3300C32BDD /* MKTagsPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027867E1D214B3300C32BDD /* MKTagsPanGestureRecognizer.m */; };
+		402786831D23684700C32BDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402786821D23684700C32BDD /* Main.storyboard */; };
+		4027868C1D237EB200C32BDD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027868B1D237EB200C32BDD /* HomeViewController.m */; };
+		402786921D238F0300C32BDD /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402786911D238F0300C32BDD /* TabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,11 @@
 		4027867B1D21356D00C32BDD /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
 		4027867D1D214B3300C32BDD /* MKTagsPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTagsPanGestureRecognizer.h; sourceTree = "<group>"; };
 		4027867E1D214B3300C32BDD /* MKTagsPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTagsPanGestureRecognizer.m; sourceTree = "<group>"; };
+		402786821D23684700C32BDD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4027868A1D237EB200C32BDD /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		4027868B1D237EB200C32BDD /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		402786901D238F0300C32BDD /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		402786911D238F0300C32BDD /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +76,15 @@
 			children = (
 				4027865E1D1D3B0800C32BDD /* AppDelegate.h */,
 				4027865F1D1D3B0800C32BDD /* AppDelegate.m */,
+				4027868A1D237EB200C32BDD /* HomeViewController.h */,
+				4027868B1D237EB200C32BDD /* HomeViewController.m */,
 				402786771D2134CF00C32BDD /* MainViewController.h */,
 				402786781D2134CF00C32BDD /* MainViewController.m */,
 				4027867A1D21356D00C32BDD /* TopicViewController.h */,
 				4027867B1D21356D00C32BDD /* TopicViewController.m */,
+				402786901D238F0300C32BDD /* TabBarViewController.h */,
+				402786911D238F0300C32BDD /* TabBarViewController.m */,
+				402786821D23684700C32BDD /* Main.storyboard */,
 				402786671D1D3B0800C32BDD /* Assets.xcassets */,
 				402786691D1D3B0800C32BDD /* LaunchScreen.storyboard */,
 				4027866C1D1D3B0800C32BDD /* Info.plist */,
@@ -164,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				402786831D23684700C32BDD /* Main.storyboard in Resources */,
 				4027866B1D1D3B0800C32BDD /* LaunchScreen.storyboard in Resources */,
 				402786681D1D3B0800C32BDD /* Assets.xcassets in Resources */,
 			);
@@ -180,7 +194,9 @@
 				402786601D1D3B0800C32BDD /* AppDelegate.m in Sources */,
 				4027865D1D1D3B0800C32BDD /* main.m in Sources */,
 				402786791D2134CF00C32BDD /* MainViewController.m in Sources */,
+				402786921D238F0300C32BDD /* TabBarViewController.m in Sources */,
 				4027867C1D21356D00C32BDD /* TopicViewController.m in Sources */,
+				4027868C1D237EB200C32BDD /* HomeViewController.m in Sources */,
 				402786761D1D3C7300C32BDD /* MKTagsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
