@@ -7,7 +7,37 @@
 //
 
 #import "MKTagsViewController.h"
-#import "MKTagsPanGestureRecognizer.h"
+#import <UIKit/UIGestureRecognizerSubclass.h>
+
+@interface MKTagsPanGestureRecognizer : UIPanGestureRecognizer
+@end
+
+@implementation MKTagsPanGestureRecognizer
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CGPoint translation = [self translationInView:self.view];
+    
+    [super touchesMoved:touches withEvent:event];
+    
+    if (self.state == UIGestureRecognizerStateBegan) {
+        if (translation.y != 0 && ABS(translation.x / translation.y) <= 1) {
+            self.state = UIGestureRecognizerStateFailed;
+        }
+    }
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CGPoint velocity = [self velocityInView:self.view];
+    CGPoint translation = [self translationInView:self.view];
+    
+    if (velocity.x * translation.x < 0) {
+        self.state = UIGestureRecognizerStateFailed;
+    }
+    
+    [super touchesEnded:touches withEvent:event];
+}
+
+@end
 
 @interface MKTagsViewController ()
 
@@ -36,8 +66,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _interactiveGestureRecognizer = [[MKTagsPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleInteractiveGR:)];
-    [self.contentView addGestureRecognizer:self.interactiveGestureRecognizer];
+    MKTagsPanGestureRecognizer *interactiveGR = [[MKTagsPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleInteractiveGR:)];
+    interactiveGR.maximumNumberOfTouches = 1;
+    [self.contentView addGestureRecognizer:interactiveGR];
+    
+    _interactiveGestureRecognizer = interactiveGR;
     
     [self transitionFromViewController:nil toViewController:self.selectedViewController];
     
