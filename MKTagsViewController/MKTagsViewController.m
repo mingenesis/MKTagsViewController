@@ -11,8 +11,6 @@
 
 @interface MKTagsViewController ()
 
-
-
 @property (nonatomic, weak) UIViewController *transitioningViewController;
 @property (nonatomic) NSInteger transDirection;
 
@@ -55,7 +53,7 @@
     self.interactiveGestureRecognizer.enabled = YES;
 }
 
-- (void)handleInteractiveGR:(UIPanGestureRecognizer *)gestureRecognizer {
+- (void)handleInteractiveGR:(MKTagsPanGestureRecognizer *)gestureRecognizer {
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
     UIViewController *transitioningVC = self.transitioningViewController;
     UIViewController *selectedVC = self.selectedViewController;
@@ -96,7 +94,7 @@
         
         if (self.transitioningViewController) {
             selectedFrame.origin.x = translation.x;
-            transFrame.origin.x = translation.x - self.transDirection * (transFrame.size.width + 10);
+            transFrame.origin.x = translation.x - self.transDirection * transFrame.size.width;
             
             transitioningVC.view.frame = transFrame;
             selectedVC.view.frame = selectedFrame;
@@ -129,7 +127,7 @@
                 [self.delegate tagsViewController:self didSelectViewController:self.selectedViewController];
             }
             
-            selectedFrame.origin.x = self.transDirection * (selectedFrame.size.width + 10);
+            selectedFrame.origin.x = self.transDirection * selectedFrame.size.width;
             
             [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 selectedVC.view.frame = selectedFrame;
@@ -144,7 +142,7 @@
             }];
         }
         else {
-            transFrame.origin.x = - self.transDirection * (transFrame.size.width + 10);
+            transFrame.origin.x = - self.transDirection * transFrame.size.width;
             
             if (self.interactiveGestureRecognizer.enabled) {
                 [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
