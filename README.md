@@ -1,2 +1,2 @@
 # MKTagsViewController
-A flexible UI Component to switch views horizontal.
+A flexible UI Component to swipe between views for iOS.
