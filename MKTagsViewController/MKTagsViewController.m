@@ -246,11 +246,7 @@
 
 - (void)setSelectedViewController:(UIViewController *)selectedViewController {
     if (selectedViewController) {
-        if (![self.viewControllers containsObject:selectedViewController]) {
-            return;
-        }
-        
-        if (selectedViewController == _selectedViewController) {
+        if (selectedViewController == _selectedViewController || ![self.viewControllers containsObject:selectedViewController]) {
             return;
         }
     }
@@ -258,14 +254,11 @@
     if (self.interactiveGestureRecognizer) {
         self.interactiveGestureRecognizer.enabled = NO;
         self.interactiveGestureRecognizer.enabled = YES;
+    
+        [self transitionFromViewController:_selectedViewController toViewController:selectedViewController];
     }
     
-    UIViewController *fromSVC = _selectedViewController;
     _selectedViewController = selectedViewController;
-    
-    if (self.interactiveGestureRecognizer) {
-        [self transitionFromViewController:fromSVC toViewController:selectedViewController];
-    }
 }
 
 - (UIView *)contentView {
