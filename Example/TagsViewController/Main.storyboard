@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -173,28 +174,23 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="leading" secondItem="KkS-vo-SY0" secondAttribute="leading" id="0NA-JR-vfN"/>
-                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="1tV-cW-IeJ"/>
-                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="9n6-5T-A5E"/>
-                                    <constraint firstAttribute="bottom" secondItem="Kzg-jU-cfc" secondAttribute="bottom" id="BN4-1c-SOm"/>
-                                    <constraint firstItem="tys-xi-MAr" firstAttribute="leading" secondItem="Yad-gZ-GXB" secondAttribute="trailing" id="Jtp-cN-tYI"/>
-                                    <constraint firstItem="Kzg-jU-cfc" firstAttribute="leading" secondItem="KkS-vo-SY0" secondAttribute="leading" id="MDv-Un-tNg"/>
-                                    <constraint firstItem="tys-xi-MAr" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="NXl-jR-5V1"/>
-                                    <constraint firstItem="tys-xi-MAr" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="PXP-8E-2UK"/>
-                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="QsC-3c-MrB"/>
+                                    <constraint firstItem="Kzg-jU-cfc" firstAttribute="centerX" secondItem="KkS-vo-SY0" secondAttribute="centerX" id="2v6-cm-DOn"/>
+                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="4kp-nq-FYD"/>
+                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="leading" secondItem="KkS-vo-SY0" secondAttribute="leading" id="6He-3c-dIV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kzg-jU-cfc" secondAttribute="bottom" id="8Pg-Fz-WRa"/>
+                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="8Ql-WI-SFA"/>
+                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="99T-DG-Gmh"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yad-gZ-GXB" secondAttribute="bottom" id="G28-bw-cZu"/>
+                                    <constraint firstItem="tys-xi-MAr" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="top" id="I2F-rG-WFk"/>
+                                    <constraint firstAttribute="bottom" secondItem="tys-xi-MAr" secondAttribute="bottom" id="S1y-jn-Eff"/>
                                     <constraint firstAttribute="height" constant="50" id="UT3-Lu-Hjz"/>
-                                    <constraint firstAttribute="bottom" secondItem="tys-xi-MAr" secondAttribute="bottom" id="XE2-M3-oNW"/>
-                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="leading" secondItem="tys-xi-MAr" secondAttribute="trailing" id="ah5-cb-toL"/>
-                                    <constraint firstItem="Yad-gZ-GXB" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="lX8-sR-VWf"/>
-                                    <constraint firstItem="Kzg-jU-cfc" firstAttribute="centerX" secondItem="KkS-vo-SY0" secondAttribute="centerX" id="qWz-Ei-Krs"/>
-                                    <constraint firstAttribute="bottom" secondItem="MXz-R9-gd0" secondAttribute="bottom" id="sqD-Yz-QDT"/>
-                                    <constraint firstAttribute="bottom" secondItem="Yad-gZ-GXB" secondAttribute="bottom" id="v6u-dD-HwZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="MXz-R9-gd0" secondAttribute="bottom" id="kXt-et-c6P"/>
+                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="rN2-QB-Ed7"/>
+                                    <constraint firstItem="tys-xi-MAr" firstAttribute="leading" secondItem="Yad-gZ-GXB" secondAttribute="trailing" id="tjK-Lg-yOM"/>
+                                    <constraint firstItem="MXz-R9-gd0" firstAttribute="leading" secondItem="tys-xi-MAr" secondAttribute="trailing" id="uvp-pm-JdX"/>
+                                    <constraint firstItem="tys-xi-MAr" firstAttribute="width" secondItem="KkS-vo-SY0" secondAttribute="width" multiplier="1:3" id="zzy-yK-uUp"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="MDv-Un-tNg"/>
-                                    </mask>
-                                </variation>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4R-pm-MXB">
                                 <rect key="frame" x="0.0" y="114" width="600" height="486"/>
@@ -206,17 +202,37 @@
                             <constraint firstItem="KkS-vo-SY0" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leading" id="4fq-dL-7V2"/>
                             <constraint firstItem="8dW-sJ-nGn" firstAttribute="top" secondItem="g4R-pm-MXB" secondAttribute="bottom" id="Jcp-wT-6zS"/>
                             <constraint firstItem="KkS-vo-SY0" firstAttribute="top" secondItem="GvK-wM-9S6" secondAttribute="bottom" id="Ns1-jP-ZBd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KkS-vo-SY0" secondAttribute="trailing" id="OXG-Rw-Yl0"/>
                             <constraint firstAttribute="trailing" secondItem="KkS-vo-SY0" secondAttribute="trailing" id="Qaw-6g-gAy"/>
+                            <constraint firstItem="KkS-vo-SY0" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leading" id="do4-1A-Fox"/>
+                            <constraint firstAttribute="trailing" secondItem="KkS-vo-SY0" secondAttribute="trailing" id="fqi-17-TFE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KkS-vo-SY0" secondAttribute="trailing" id="fwE-gI-S3m"/>
+                            <constraint firstItem="KkS-vo-SY0" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leadingMargin" id="hEg-9E-Jiv"/>
                             <constraint firstAttribute="trailing" secondItem="g4R-pm-MXB" secondAttribute="trailing" id="jky-cv-p4x"/>
+                            <constraint firstAttribute="trailing" secondItem="KkS-vo-SY0" secondAttribute="trailing" id="nyU-n2-zl5"/>
                             <constraint firstItem="g4R-pm-MXB" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leading" id="qAc-Si-Y7S"/>
                             <constraint firstItem="g4R-pm-MXB" firstAttribute="top" secondItem="KkS-vo-SY0" secondAttribute="bottom" id="rJd-Mb-jOF"/>
+                            <constraint firstItem="KkS-vo-SY0" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leading" id="tV6-nh-sdk"/>
+                            <constraint firstItem="KkS-vo-SY0" firstAttribute="leading" secondItem="Pxz-bc-JiZ" secondAttribute="leadingMargin" id="tjg-O3-ovQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4fq-dL-7V2"/>
+                                <exclude reference="OXG-Rw-Yl0"/>
+                                <exclude reference="Qaw-6g-gAy"/>
+                                <exclude reference="fwE-gI-S3m"/>
+                                <exclude reference="hEg-9E-Jiv"/>
+                                <exclude reference="nyU-n2-zl5"/>
+                                <exclude reference="tV6-nh-sdk"/>
+                                <exclude reference="tjg-O3-ovQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="2d3-2Z-jE5"/>
                     <connections>
                         <outlet property="contentView" destination="g4R-pm-MXB" id="MXU-VK-OKI"/>
                         <outlet property="tagBar" destination="KkS-vo-SY0" id="lGK-4x-NBL"/>
-                        <outlet property="tagLineCenterConstraint" destination="qWz-Ei-Krs" id="9YP-g5-6f0"/>
+                        <outlet property="tagLineCenterConstraint" destination="2v6-cm-DOn" id="hGe-we-GWo"/>
                         <outletCollection property="tagButtons" destination="Yad-gZ-GXB" id="ZwK-tb-frs"/>
                         <outletCollection property="tagButtons" destination="tys-xi-MAr" id="ZGa-Ym-dxZ"/>
                         <outletCollection property="tagButtons" destination="MXz-R9-gd0" id="QyN-Yt-VK6"/>

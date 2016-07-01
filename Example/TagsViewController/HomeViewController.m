@@ -35,15 +35,18 @@
     self.delegate = self;
     self.viewControllers = @[vc1, vc2, vc3];
     
-    [self updateTagLine:NO];
+    [self updateTagLineForBarWidth:0 animated:NO];
     [self.interactiveGestureRecognizer addTarget:self action:@selector(handleInteractive:)];
 }
 
-- (void)updateTagLine:(BOOL)animated {
+- (void)updateTagLineForBarWidth:(CGFloat)width animated:(BOOL)animated  {
+    if (width == 0) {
+        width = [UIScreen mainScreen].bounds.size.width;
+    }
+    
     NSInteger idx = [self.viewControllers indexOfObject:self.selectedViewController];
     CGFloat count = self.viewControllers.count;
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGFloat center = 0.5 * screenWidth * (-1 + (2 * idx + 1) / count);
+    CGFloat center = 0.5 * width * (-1 + (2 * idx + 1) / count);
     
     self.tagLineCenterConstraint.constant = center;
     
@@ -54,12 +57,16 @@
     }
 }
 
+- (CGFloat)tagBarWidthForSize:(CGSize)size {
+    return MIN(size.width, size.height);
+}
+
 - (IBAction)tagButtonDidClick:(UIButton *)sender {
     UIViewController *vc = self.viewControllers[sender.tag];
     
     self.selectedViewController = vc;
     
-    [self updateTagLine:YES];
+    [self updateTagLineForBarWidth:0 animated:YES];
 }
 
 - (void)handleInteractive:(UIGestureRecognizer *)gestureRecognizer {
@@ -73,14 +80,20 @@
         self.tagLineCenterConstraint.constant = self.tagLineCenter - 0.2 * translation.x / self.viewControllers.count;
     }
     else {
-        [self updateTagLine:YES];
+        [self updateTagLineForBarWidth:0 animated:YES];
     }
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [self updateTagLineForBarWidth:size.width animated:NO];
 }
 
 #pragma mark - MKTagsViewControllerDelegate
 
 - (void)tagsViewController:(MKTagsViewController *)tagsViewController didSelectViewController:(UIViewController *)viewController {
-    [self updateTagLine:YES];
+    [self updateTagLineForBarWidth:0 animated:YES];
 }
 
 @end
