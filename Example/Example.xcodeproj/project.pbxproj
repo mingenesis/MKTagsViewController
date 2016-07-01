@@ -12,7 +12,6 @@
 		4047B9201D26466A00EF8782 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4047B9111D26466A00EF8782 /* Assets.xcassets */; };
 		4047B9211D26466A00EF8782 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4047B9121D26466A00EF8782 /* LaunchScreen.storyboard */; };
 		4047B9221D26466A00EF8782 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047B9151D26466A00EF8782 /* HomeViewController.m */; };
-		4047B9231D26466A00EF8782 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4047B9161D26466A00EF8782 /* Info.plist */; };
 		4047B9241D26466A00EF8782 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047B9171D26466A00EF8782 /* main.m */; };
 		4047B9251D26466A00EF8782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4047B9181D26466A00EF8782 /* Main.storyboard */; };
 		4047B9261D26466A00EF8782 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047B91A1D26466A00EF8782 /* TabBarViewController.m */; };
@@ -92,21 +91,29 @@
 			children = (
 				4047B90F1D26466A00EF8782 /* AppDelegate.h */,
 				4047B9101D26466A00EF8782 /* AppDelegate.m */,
-				4047B9111D26466A00EF8782 /* Assets.xcassets */,
-				4047B9121D26466A00EF8782 /* LaunchScreen.storyboard */,
 				4047B9141D26466A00EF8782 /* HomeViewController.h */,
 				4047B9151D26466A00EF8782 /* HomeViewController.m */,
-				4047B9161D26466A00EF8782 /* Info.plist */,
-				4047B9171D26466A00EF8782 /* main.m */,
-				4047B9181D26466A00EF8782 /* Main.storyboard */,
 				4047B9191D26466A00EF8782 /* TabBarViewController.h */,
 				4047B91A1D26466A00EF8782 /* TabBarViewController.m */,
 				4047B91B1D26466A00EF8782 /* TableViewController.h */,
 				4047B91C1D26466A00EF8782 /* TableViewController.m */,
 				4047B91D1D26466A00EF8782 /* TopicViewController.h */,
 				4047B91E1D26466A00EF8782 /* TopicViewController.m */,
+				4047B9181D26466A00EF8782 /* Main.storyboard */,
+				4047B9111D26466A00EF8782 /* Assets.xcassets */,
+				4047B9121D26466A00EF8782 /* LaunchScreen.storyboard */,
+				4047B9161D26466A00EF8782 /* Info.plist */,
+				4047B94C1D26497900EF8782 /* Supporting Files */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		4047B94C1D26497900EF8782 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4047B9171D26466A00EF8782 /* main.m */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,7 +174,6 @@
 			files = (
 				4047B9201D26466A00EF8782 /* Assets.xcassets in Resources */,
 				4047B9211D26466A00EF8782 /* LaunchScreen.storyboard in Resources */,
-				4047B9231D26466A00EF8782 /* Info.plist in Resources */,
 				4047B9251D26466A00EF8782 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
