@@ -1,6 +1,6 @@
 //
 //  main.m
-//  TagsViewController
+//  Example
 //
 //  Created by Mingenesis on 16/6/24.
 //
