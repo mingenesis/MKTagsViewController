@@ -35,13 +35,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appearance methods Debug" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rs-xW-35G">
+                                <rect key="frame" x="20" y="84" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpY-D7-VNb">
-                                <rect key="frame" x="20" y="224" width="560" height="50"/>
+                                <rect key="frame" x="20" y="265" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Ncx-qG-eqc"/>
                                     <constraint firstAttribute="height" constant="50" id="bUG-jx-7JU"/>
                                 </constraints>
-                                <state key="normal" title="UIViewController"/>
+                                <state key="normal" title="UINavigationController"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Ncx-qG-eqc"/>
@@ -52,7 +58,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaY-7w-YVe">
-                                <rect key="frame" x="20" y="154" width="560" height="50"/>
+                                <rect key="frame" x="20" y="195" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Zgx-P2-awx"/>
                                     <constraint firstAttribute="width" constant="100" id="dwd-zE-72I"/>
@@ -70,7 +76,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ac1-on-YsO">
-                                <rect key="frame" x="20" y="84" width="560" height="50"/>
+                                <rect key="frame" x="20" y="125" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="A60-oK-gdB"/>
                                     <constraint firstAttribute="width" constant="100" id="IYN-lQ-zCO"/>
@@ -93,12 +99,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dpY-D7-VNb" secondAttribute="trailing" constant="20" id="2NF-ei-Qw6"/>
+                            <constraint firstItem="ac1-on-YsO" firstAttribute="top" secondItem="1Rs-xW-35G" secondAttribute="bottom" constant="20" id="4mB-Tz-yp9"/>
                             <constraint firstItem="KaY-7w-YVe" firstAttribute="leading" secondItem="GQV-IM-inH" secondAttribute="leading" constant="20" id="CLI-RE-jDw"/>
                             <constraint firstItem="ac1-on-YsO" firstAttribute="leading" secondItem="KaY-7w-YVe" secondAttribute="trailing" id="HAw-EM-PsL"/>
                             <constraint firstItem="dpY-D7-VNb" firstAttribute="top" secondItem="KaY-7w-YVe" secondAttribute="bottom" constant="20" id="IIU-mh-3Io"/>
                             <constraint firstItem="KaY-7w-YVe" firstAttribute="top" secondItem="qpI-cw-fLL" secondAttribute="bottom" constant="8" id="JYM-OX-Zse"/>
                             <constraint firstItem="KaY-7w-YVe" firstAttribute="top" secondItem="ac1-on-YsO" secondAttribute="bottom" constant="20" id="Jrh-vi-TRR"/>
                             <constraint firstItem="ac1-on-YsO" firstAttribute="leading" secondItem="GQV-IM-inH" secondAttribute="leading" constant="20" id="LII-M2-fZt"/>
+                            <constraint firstAttribute="trailing" secondItem="1Rs-xW-35G" secondAttribute="trailing" constant="20" id="SdO-ZE-she"/>
                             <constraint firstAttribute="trailing" secondItem="KaY-7w-YVe" secondAttribute="trailing" constant="20" id="UDc-13-SDl"/>
                             <constraint firstItem="KaY-7w-YVe" firstAttribute="leading" secondItem="dpY-D7-VNb" secondAttribute="trailing" id="UW5-YI-0kU"/>
                             <constraint firstItem="ac1-on-YsO" firstAttribute="leading" secondItem="KaY-7w-YVe" secondAttribute="trailing" id="Y4b-Us-2dc"/>
@@ -106,14 +114,25 @@
                             <constraint firstItem="dpY-D7-VNb" firstAttribute="top" secondItem="qpI-cw-fLL" secondAttribute="bottom" constant="8" id="hxi-vz-z6p"/>
                             <constraint firstItem="dpY-D7-VNb" firstAttribute="leading" secondItem="GQV-IM-inH" secondAttribute="leading" constant="20" id="kca-zF-Wdy"/>
                             <constraint firstAttribute="trailing" secondItem="ac1-on-YsO" secondAttribute="trailing" constant="20" id="kjd-u5-8iL"/>
+                            <constraint firstItem="1Rs-xW-35G" firstAttribute="top" secondItem="qpI-cw-fLL" secondAttribute="bottom" constant="20" id="ljC-R6-B6y"/>
+                            <constraint firstItem="1Rs-xW-35G" firstAttribute="leading" secondItem="GQV-IM-inH" secondAttribute="leading" constant="20" id="lk0-mH-hhw"/>
                             <constraint firstItem="ac1-on-YsO" firstAttribute="top" secondItem="qpI-cw-fLL" secondAttribute="bottom" constant="8" id="mVf-Dw-PJB"/>
+                            <constraint firstItem="1Rs-xW-35G" firstAttribute="leading" secondItem="GQV-IM-inH" secondAttribute="leadingMargin" constant="20" id="qAT-9G-u8P"/>
+                            <constraint firstAttribute="trailing" secondItem="1Rs-xW-35G" secondAttribute="trailing" constant="20" id="rj8-Xs-dmQ"/>
+                            <constraint firstItem="ac1-on-YsO" firstAttribute="top" secondItem="1Rs-xW-35G" secondAttribute="bottom" constant="20" id="wCc-k1-a0c"/>
+                            <constraint firstItem="1Rs-xW-35G" firstAttribute="top" secondItem="qpI-cw-fLL" secondAttribute="bottom" constant="20" id="x8q-0P-TvV"/>
                             <constraint firstItem="dpY-D7-VNb" firstAttribute="leading" secondItem="GQV-IM-inH" secondAttribute="leading" constant="20" id="xOQ-Ul-dsA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="ljC-R6-B6y"/>
+                                <exclude reference="qAT-9G-u8P"/>
+                                <exclude reference="rj8-Xs-dmQ"/>
                                 <exclude reference="HAw-EM-PsL"/>
                                 <exclude reference="Y4b-Us-2dc"/>
+                                <exclude reference="bW7-gE-ob2"/>
                                 <exclude reference="mVf-Dw-PJB"/>
+                                <exclude reference="wCc-k1-a0c"/>
                                 <exclude reference="JYM-OX-Zse"/>
                                 <exclude reference="UW5-YI-0kU"/>
                                 <exclude reference="hxi-vz-z6p"/>
