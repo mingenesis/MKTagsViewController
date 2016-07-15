@@ -39,7 +39,7 @@
     self.data = data;
 }
 
-#pragma mark - TableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.data.count;
